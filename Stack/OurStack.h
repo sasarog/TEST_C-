@@ -4,7 +4,7 @@ class OurStack
 private:
 	//Данные которые хранятся в ячейке стека
 	int data;
-	//Указатель на следующий элемент
+	//Указатель на предыдущий элемент
 	OurStack* prev;
 	public:
 		OurStack();

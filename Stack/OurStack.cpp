@@ -36,7 +36,8 @@ int OurStack::pop()
 {
 	//Проверяем, что стек не пустой
 	if (prev == nullptr) {
-		throw  "No elem" ;
+		//throw  "No elem" ;
+		return NULL;
 	}
 	//запоминаем данные для вывода
 	int result = this->data;
