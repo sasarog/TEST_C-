@@ -6,7 +6,8 @@ BinTree* BinTree::findMin()
 	if (left != NULL) {
 		return left->findMin();
 		//если слева пусто, то это мин. элемент, который нужно вернуть
-	}else{
+	}
+	else {
 		return this;
 	}
 }
@@ -22,6 +23,43 @@ BinTree* BinTree::poisk(int value)
 		return left->poisk(value);
 	}
 
+}
+
+void BinTree::deleteBy(int value, BinTree* papa)
+{
+	
+	if (this->data == value) {
+		//Листок
+		if (left == NULL && right == NULL) {
+			if (papa->left == this) {
+				papa->left = NULL;
+			}
+			else {
+				papa->right = NULL;
+			}
+			delete this;
+			return;
+		}
+		//Один ребёнок
+		if (papa->left == this) {
+			papa->left = left == NULL ? right : left;
+		}
+		else {
+			papa->right = left == NULL ? right : left;
+		}
+		delete this;
+		return;
+		// Два ребёнка
+
+	}
+	else {
+		if (value > data) {
+			right->deleteBy(value, this);
+		}
+		else {
+			left->deleteBy(value, this);
+		}		
+	}
 }
 
 void BinTree::add(int value)
@@ -84,14 +122,7 @@ bool BinTree::consist(int poisk)
 
 bool BinTree::deleteElem(int value)
 {
-	if (value == data)
-		return this;
-	if (value > data) {
-		return right->poisk(value);
-	}
-	else {
-		return left->poisk(value);
-	}
 
 
+	return false;
 }
