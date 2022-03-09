@@ -50,7 +50,17 @@ void BinTree::deleteBy(int value, BinTree* papa)
 		delete this;
 		return;
 		// Äâà ğåá¸íêà
-
+		BinTree* smena = right;
+		BinTree* smenaPapa = right;
+		while (smena->left != NULL)
+		{
+			smenaPapa = smena;
+			smena = smena->left;
+		}
+		this->data = smena->data;
+		delete smena;
+		smenaPapa->left = NULL;
+		
 	}
 	else {
 		if (value > data) {
